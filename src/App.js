@@ -19,6 +19,11 @@ function App() {
       .then((res) => setUsers(res.data));
     console.log(users);
   };
+  const removeUser = (id) => {
+    axios.delete(`https://users-crud1.herokuapp.com/users/${id}/`)
+    .then(()=>getUsers());
+    console.log(id)
+  };
 
   console.log(users);
   
@@ -31,7 +36,8 @@ function App() {
       />
       <UsersList 
       users={users} 
-      setUserSelected={setUserSelected} 
+      setUserSelected={setUserSelected}
+      removeUser={removeUser} 
       />
     </div>
   );
